@@ -6,7 +6,16 @@ import data from "../../data/page.json";
 import { validateFile } from "./file-uploader-validator";
 
 export default function FileUploader() {
-const [isDragging, setIsDragging] = useState(false);
+    const [isDragging, setIsDragging] = useState(false);
+    const handleFile = (file: File | undefined) => {
+        if (!file) { 
+            return; 
+        }
+        else
+        {
+            validateFile(file);
+        }
+    }
 
     return (
         <label
