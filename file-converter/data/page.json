@@ -1,4 +1,5 @@
 {
+    "allowedFileTypes": [".txt", ".pdf", ".docx", ".jpg", ".png"],
     "heading": "File Converter",
     "description": "Convert files to different formats easily.",
     "subtext": "Start by uploading your file to convert."
