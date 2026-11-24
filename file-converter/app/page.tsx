@@ -1,4 +1,5 @@
 import Image from "next/image";
+import pageData from "../data/page.json";
 
 export default function Home() {
   return (
@@ -16,14 +17,17 @@ export default function Home() {
 
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
           
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            File Converter
+          <h1 className="max-w-xs text-3xl font-bold leading-10 tracking-tight text-black dark:text-zinc-50">
+            {pageData.heading}
           </h1>
 
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Placeholder starting point for beginning work.
-            By Jack
-          </p>
+          <h2 className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+            {pageData.description}
+          </h2>
+
+          <h2 className="max-w-md text-md leading-6 text-zinc-500 dark:text-zinc-400">
+            {pageData.subtext}
+          </h2>
 
         </div>
 
