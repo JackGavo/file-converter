@@ -20,12 +20,15 @@ export default function Home() {
           <p className="flex text-lg tracking-tight leading-6 text-zinc-500 dark:text-zinc-400">
             {pageData.subtext}
           </p>
-
         </div>
 
-        <div className="mx-auto w-full">
+        <div className="flex w-full justify-center">
           <FileUploader />
         </div>
+
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 tracking-tight">
+          {pageData.dragAndDropText}
+        </p>
 
       </main>
     </div>
