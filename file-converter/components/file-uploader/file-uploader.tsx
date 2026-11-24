@@ -1,6 +1,13 @@
+"use client";
+
+import {useState} from "react";
+
 import data from "../../data/page.json";
+import { validateFile } from "./file-uploader-validator";
 
 export default function FileUploader() {
+const [isDragging, setIsDragging] = useState(false);
+
     return (
         <label
             htmlFor="file-input"
