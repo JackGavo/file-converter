@@ -1,8 +1,8 @@
 {
-    "allowedFileTypes": [".txt", ".pdf", ".docx", ".jpg", ".png"],
+    "allowedFileTypes": [".pdf", ".jpg", ".jpeg", ".png"],
     "heading": "File Converter",
     "description": "Convert files to different formats easily.",
     "subtext": "Start by uploading your file to convert.",
-    "dragAndDropText": "Drag and drop your file here, or click to select a file.",
+    "dragAndDropText": "Drag & drop your file, or click to select a file.",
     "uploadButtonText": "Upload File"
 }

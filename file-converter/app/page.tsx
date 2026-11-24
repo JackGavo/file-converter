@@ -26,6 +26,9 @@ export default function Home() {
           <FileUploader />
         </div>
 
+        // TODO: Add loading bar whilst file is uploading & converting (maybe replace button)
+        // TODO: Block file upload until conversion is complete, then auto download converted file
+
         <p className="text-sm text-zinc-500 dark:text-zinc-400 tracking-tight">
           {pageData.dragAndDropText}
         </p>
