@@ -1,16 +1,20 @@
+import data from "../../data/page.json";
+
 export function validateFile(file: File): boolean {
-    const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-    const maxSizeInBytes = 5 * 1024 * 1024; // 5MB
+    const allowedTypes = data.allowedFileTypes;
 
     if (!allowedTypes.includes(file.type)) {
         alert('Invalid file type. Please upload a JPEG, PNG, or PDF file.');
         return false;
     }
 
-    if (file.size > maxSizeInBytes) {
-        alert('File size exceeds the maximum limit of 5MB.');
-        return false;
-    }
+
+    // const maxSizeInBytes = 5 * 1024 * 1024; // 5MB
+
+    // if (file.size > maxSizeInBytes) {
+    //     alert('File size exceeds the maximum limit of 5MB.');
+    //     return false;
+    // }
 
     return true;
 }
