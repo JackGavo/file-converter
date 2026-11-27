@@ -11,7 +11,7 @@ export default function FileUploader() {
     const [file, setFile] = useState<File | null>(null);
     const [isUploading, setIsUploading] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
-    const [errorMessage, setErrorMessage] = useState<string | null>("Invalid File Type.");
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     const [isDragging, setIsDragging] = useState(false);
     const handleFile = (file: File | undefined) => {
