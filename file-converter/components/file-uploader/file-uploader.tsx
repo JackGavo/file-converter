@@ -4,18 +4,33 @@ import {useState} from "react";
 
 import data from "../../data/page.json";
 import { validateFile } from "./file-uploader-validator";
+import { LoadingBar } from "../loading-bar/loading-bar";
 
 export default function FileUploader() {
+
+    const [file, setFile] = useState<File | null>(null);
+    const [isUploading, setIsUploading] = useState(false);
+    const [uploadProgress, setUploadProgress] = useState(0);
+
     const [isDragging, setIsDragging] = useState(false);
     const handleFile = (file: File | undefined) => {
-        if (!file) { 
-            return; 
-        }
-        else
-        {
-            validateFile(file);
-        }
-    };
+        if (!file) return;
+
+        if (!validateFile(file)) {
+            setIsUploading(false);
+            // add error message state here
+            return;
+        };
+
+        setFile(file);
+        setIsUploading(true);
+        setUploadProgress(0);
+             
+    }
+
+    if (isUploading) {
+        return <LoadingBar progress={50} />
+    }
 
     return (
         <label
@@ -46,4 +61,5 @@ export default function FileUploader() {
             {data.uploadButtonText}
         </label>
     );
+
 }
