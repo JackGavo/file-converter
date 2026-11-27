@@ -11,6 +11,7 @@ export default function FileUploader() {
     const [file, setFile] = useState<File | null>(null);
     const [isUploading, setIsUploading] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
+    const [errorMessage, setErrorMessage] = useState<string | null>("Invalid File Type.");
 
     const [isDragging, setIsDragging] = useState(false);
     const handleFile = (file: File | undefined) => {
@@ -18,7 +19,7 @@ export default function FileUploader() {
 
         if (!validateFile(file)) {
             setIsUploading(false);
-            // add error message state here
+            setErrorMessage("Invalid file type or size.");
             return;
         };
 
@@ -33,33 +34,41 @@ export default function FileUploader() {
     }
 
     return (
-        <label
-            htmlFor="file-input"
-            className={`flex h-65 w-full cursor-pointer items-center justify-center 
-                rounded-md border border-solid border-black/[.08] px-5 
-                transition-colors hover:border-transparent hover:bg-black/[.04] 
-                dark:border-white/[.145] dark:hover:bg-[#1a1a1a]
-                ${isDragging ? "bg-black/[.04] dark:bg-[#1a1a1a]" : ""}
-            `}
-            
-            onDragOver={
-                (e) => {
-                    e.preventDefault();
-                    setIsDragging(true);
+        <div className="flex w-full flex-col gap-2">
+            {errorMessage && (
+                <div className="flex items-center justify-center">
+                    <p className="text-red-500">{errorMessage}</p>
+                </div>
+            )}
+
+            <label
+                htmlFor="file-input"
+                className={`flex h-65 w-full cursor-pointer items-center justify-center 
+                    rounded-md border border-solid border-black/[.08] px-5 
+                    transition-colors hover:border-transparent hover:bg-black/[.04] 
+                    dark:border-white/[.145] dark:hover:bg-[#1a1a1a]
+                    ${isDragging ? "bg-black/[.04] dark:bg-[#1a1a1a]" : ""}
+                `}
+                
+                onDragOver={
+                    (e) => {
+                        e.preventDefault();
+                        setIsDragging(true);
+                    }
                 }
-            }
-            onDragLeave={() => {
-                setIsDragging(false)
-            }}
-            onDrop={(e) => {
-                e.preventDefault();
-                setIsDragging(false);
-                handleFile(e.dataTransfer.files[0]);
-            }}
-        >
-            <input id="file-input" type="file" className="hidden" />
-            {data.uploadButtonText}
-        </label>
+                onDragLeave={() => {
+                    setIsDragging(false)
+                }}
+                onDrop={(e) => {
+                    e.preventDefault();
+                    setIsDragging(false);
+                    handleFile(e.dataTransfer.files[0]);
+                }}
+            >
+                <input id="file-input" type="file" className="hidden" />
+                {data.uploadButtonText}
+            </label>
+        </div>
     );
 
 }

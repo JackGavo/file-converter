@@ -4,7 +4,7 @@ export function validateFile(file: File): boolean {
     const allowedTypes = data.allowedFileTypes;
 
     if (!allowedTypes.includes(file.type)) {
-        alert('Invalid file type. Please upload one of the allowed file types: ' + allowedTypes.join(', '));
+        //alert('Invalid file type. Please upload one of the allowed file types: ' + allowedTypes.join(', '));
         return false;
     }
 
